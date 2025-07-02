@@ -2,9 +2,9 @@ import React, { useState, useEffect, forwardRef } from "react";
 import Flickity from "flickity";
 import "flickity/css/flickity.css";
 import { projects } from "../data/project.js";
-import "../index.css";
-import "../app.css";
 import { motion } from "motion/react";
+import "../index.css";
+import "../App.css";
 
 const ProjectSlider = forwardRef((props, ref) => {
   const [selectedProject, setSelectedProject] = useState(null);
