@@ -1,0 +1,39 @@
+- on hover about and contact us line comes using motion library
+- instagram logo link not working
+- font styling of website
+- inclusion of email ID ? phone number?
+- address visible like A block and 1136 number?
+
+- contact us form -> name, email optional, contact number, message or query for the project
+- phone number left padding while typing is sticking to left border
+- proper alignment of the footer
+
+
+- responsiveness of entire website; check for mobile in specific
+
+- link of about us, contact us in header is not attached
+
+- carousal yet to attach
+- slider images folder 
+- project display of photos and grid layout remaining for the slider + arrange photos according to project
+
+- even profile photo in rectangle instead of round and insta logo as well format
+
+- uage of motion library? for animation
+
+- add the lineup studio mail in the contact form email js and remove email field if not required then.
+
+- any animations needed for the website?
+
+- slider height? - decrease? => 56% ideal for showing entire photo but can't fit entire screen height in this otherwise photo will be cropped
+
+- slider text not coming properly at different screen widths
+
+- should I include email in footer like 'lineupstudio@gmail.com' ?
+
+
+
+- remove offset from the code as header is not fixed on top
+- padding of entire websit 15? or only slider padding?
+
+- Add things like => when you reload the lineup website it should show the entire screen black or white it shows the line up studio logo in the center and then it navvigates to the home screen of the website

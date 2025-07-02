@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Playfair+Display:wght@400..700&display=swap');
+@import "tailwindcss";
+
+@layer base {
+  html {
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
+    padding: 0px 15px;
+    /* margin: auto; */
+  }
+}
+
+.flickity-prev-next-button{
+  background: rgba(211, 211, 211, 0.442) !important;   
+  color: darkslategray !important;
+  border-radius: 0px !important;
+  height: 30px !important;
+  width: 30px !important;
+}
+.flickity-prev-next-button:hover{
+  background: black !important;
+  color: white !important;
+}
