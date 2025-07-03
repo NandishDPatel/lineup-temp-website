@@ -64,7 +64,7 @@ const ProjectSlider = forwardRef((props, ref) => {
 
   return (
     <div className="slideshow bg-white max-w-full" id="slider" ref={ref}>
-      <div className="gallery js-flickity h-screen mx-auto bg-black text-center">
+      {/* <div className="gallery js-flickity h-screen mx-auto bg-black text-center">
         {projects.map((project) => (
           <div
             key={project.id}
@@ -79,6 +79,47 @@ const ProjectSlider = forwardRef((props, ref) => {
         
             onClick={() => handleImageClick(project)}
           >
+            <motion.span
+              whileInView={{ opacity: 1 }}
+              initial={{ opacity: 0 }}
+              transition={{ duration: 2 }}
+              className="absolute top-5  transform -translate-x-1/2 text-2xl md:text-4xl font-medium text-white px-2 py-1 rounded"
+            >
+              {project.title}
+            </motion.span>
+            <motion.span
+              whileInView={{ opacity: 1 }}
+              initial={{ opacity: 0 }}
+              transition={{ duration: 2 }}
+              className="absolute top-20 transform -translate-x-1/2 text-sm text-white px-2 py-1 rounded"
+            >
+              {project.tagline}
+            </motion.span>
+            <motion.span
+              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: -50 }}
+              transition={{ duration: 1 }}
+              className="absolute bottom-10 transform -translate-x-1/2 text-sm font-bold text-white px-2 py-1 rounded"
+            >
+              {project.tag}
+            </motion.span>
+          </div>
+        ))}
+      </div> */}
+      <div className="gallery js-flickity mx-auto bg-black text-center">
+        {projects.map((project) => (
+          <div
+            key={project.id}
+            className="gallery-cell w-full h-screen relative cursor-pointer"
+            onClick={() => handleImageClick(project)}
+          >
+            <img
+              src={project.image[0]}
+              alt={project.title}
+              loading="lazy"
+              className="absolute h-full w-full object-cover"
+            />
+
             <motion.span
               whileInView={{ opacity: 1 }}
               initial={{ opacity: 0 }}
