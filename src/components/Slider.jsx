@@ -6,6 +6,39 @@ import { motion } from "motion/react";
 import "../index.css";
 import "../App.css";
 
+const ImageWithBlur = ({ img, blurredImg, alt }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  return (
+    <div className="relative h-64 w-full overflow-hidden">
+      {/* Blurred background always visible */}
+      <div
+        className="absolute inset-0 bg-cover bg-no-repeat bg-center blur-lg transition-transform duration-300 ease-in-out"
+        style={{
+          backgroundImage: `url(${blurredImg})`,
+          opacity: isLoaded ? 0 : 1,
+        }}
+      ></div>
+
+      {/* Real image: only visible after loading */}
+      <img
+        src={img}
+        alt={alt}
+        onLoad={() => setIsLoaded(true)}
+        onError={() => {
+          console.error("Image failed to load:", img);
+          setIsLoaded(true); // fallback
+        }}
+        className={`absolute h-full w-full object-cover hover:scale-110 duration-300 transition-transform ease-in-out ${
+          isLoaded ? "opacity-100" : "opacity-0"
+        }`}
+        loading="lazy"
+      />
+    </div>
+  );
+};
+
+
 const ProjectSlider = forwardRef((props, ref) => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -89,21 +122,34 @@ const ProjectSlider = forwardRef((props, ref) => {
           <div
             className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 flex-grow overflow-y-auto`}
           >
-            {selectedProject.image.map((img, index) => (
-              <div key={index} className="relative h-64 w-full overflow-hidden">
-                <picture>
-                  <img
+            {/* {selectedProject.image.map((img, index) => (
+              <div key={index} className="image-box relative h-64 w-full overflow-hidden">
+                <div
+                  className="blurred-img absolute inset-0 bg-cover bg-no-repeat bg-center blur-lg "
+                  style={{
+                    backgroundImage: `url(${selectedProject.imageBlurred[index]})`,
+                  }}
+                >
+                </div>
+
+                <img
                     src={img}
                     alt={`Project ${selectedProject.id} - ${index}`}
                     className="absolute h-full w-full object-cover hover:scale-105 transition-transform duration-300"
                     loading="lazy"
-                    decoding="asynchronous"
-                    height={64}
-                    width={64}
+                    decoding="async"
                   />
-                </picture>
               </div>
-            ))}
+            ))} */}
+            {selectedProject.image.map((img, index) => (
+  <ImageWithBlur
+    key={index}
+    img={img}
+    blurredImg={selectedProject.imageBlurred[index]}
+    alt={`Project ${selectedProject.id} - ${index}`}
+  />
+))}
+
           </div>
 
           <div className="text-center text-white py-4">

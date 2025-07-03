@@ -36,7 +36,7 @@ const Footer = () => {
           initial={{ opacity: 0, y: -100 }}
           transition={{ duration: 1.5 }} className="absolute bottom-10 right-10 bg-gray-500 p-2 rounded-full hover:cursor-pointer hover:bg-white"
           onClick={() => scrollToSection("slider")}>
-          <img className="font-bold" src="src/assets/icons/up-arrow-svgrepo-com.svg" height="15px" width="15px" />
+          <img className="font-bold" src="/icons/up-arrow-svgrepo-com.svg" height="15px" width="15px" />
         </motion.div>
       </div>
     </>
