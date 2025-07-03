@@ -23,7 +23,7 @@ const Header = () => {
           />
         </div>
 
-        <nav className="hidden md:flex items-center space-x-4">
+        <nav className="hidden sm:flex items-center space-x-4">
           <a
             href="#aboutSec"
             className="px-4 py-2 text-black hover:text-gray-500 font-medium transition-colors border-b-2"
