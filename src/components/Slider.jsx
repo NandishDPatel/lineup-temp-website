@@ -5,38 +5,7 @@ import { projects } from "../data/project.js";
 import { motion } from "motion/react";
 import "../index.css";
 import "../App.css";
-
-const ImageWithBlur = ({ img, blurredImg, alt }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  return (
-    <div className="relative h-64 w-full overflow-hidden">
-      {/* Blurred background always visible */}
-      <div
-        className="absolute inset-0 bg-cover bg-no-repeat bg-center blur-lg transition-transform duration-300 ease-in-out"
-        style={{
-          backgroundImage: `url(${blurredImg})`,
-          opacity: isLoaded ? 0 : 1,
-        }}
-      ></div>
-
-      {/* Real image: only visible after loading */}
-      <img
-        src={img}
-        alt={alt}
-        onLoad={() => setIsLoaded(true)}
-        onError={() => {
-          console.error("Image failed to load:", img);
-          setIsLoaded(true); // fallback
-        }}
-        className={`absolute h-full w-full object-cover hover:scale-110 duration-300 transition-transform ease-in-out will-change-transform ${
-          isLoaded ? "opacity-100" : "opacity-0"
-        }`}
-        loading="lazy"
-      />
-    </div>
-  );
-};
+import ImageWithBlur from "./ImageWithBlur.jsx";
 
 const ProjectSlider = forwardRef((props, ref) => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -64,48 +33,6 @@ const ProjectSlider = forwardRef((props, ref) => {
 
   return (
     <div className="slideshow bg-white max-w-full" id="slider" ref={ref}>
-      {/* <div className="gallery js-flickity h-screen mx-auto bg-black text-center">
-        {projects.map((project) => (
-          <div
-            key={project.id}
-            className="gallery-cell w-full relative cursor-pointer"
-            style={{
-              backgroundImage: `url(${project.image[0]})`,
-              backgroundSize: "100% 100%",
-              backgroundPosition: "center",
-              height: "100%",
-              width: "100%",
-            }}
-        
-            onClick={() => handleImageClick(project)}
-          >
-            <motion.span
-              whileInView={{ opacity: 1 }}
-              initial={{ opacity: 0 }}
-              transition={{ duration: 2 }}
-              className="absolute top-5  transform -translate-x-1/2 text-2xl md:text-4xl font-medium text-white px-2 py-1 rounded"
-            >
-              {project.title}
-            </motion.span>
-            <motion.span
-              whileInView={{ opacity: 1 }}
-              initial={{ opacity: 0 }}
-              transition={{ duration: 2 }}
-              className="absolute top-20 transform -translate-x-1/2 text-sm text-white px-2 py-1 rounded"
-            >
-              {project.tagline}
-            </motion.span>
-            <motion.span
-              whileInView={{ opacity: 1, y: 0 }}
-              initial={{ opacity: 0, y: -50 }}
-              transition={{ duration: 1 }}
-              className="absolute bottom-10 transform -translate-x-1/2 text-sm font-bold text-white px-2 py-1 rounded"
-            >
-              {project.tag}
-            </motion.span>
-          </div>
-        ))}
-      </div> */}
       <div className="gallery js-flickity mx-auto bg-black text-center">
         {projects.map((project) => (
           <div
